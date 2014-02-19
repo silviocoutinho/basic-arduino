@@ -1,0 +1,38 @@
+/*
+**********************************************
+* Autor: Silvio Ferreira Coutinho            *
+* Data: 18/02/2014                           *
+* Projeto Acender ou apagar LED              *
+* Acender LED apos acionamento do botao 1    *
+* Apagar LED apos acionamento do botao 2     *
+* 2 botoes no modo pull-up                   *
+**********************************************
+*/
+
+byte pinLED1 = 12;
+byte button1 = 2;
+byte button2 = 3;
+int estadoLED1;
+
+void setup() {
+  pinMode(pinLED1, OUTPUT);  
+  pinMode(button1, INPUT);
+  pinMode(button2, INPUT);
+
+}
+
+void loop() {
+  
+    int state1 = digitalRead(button1); //lendo o pino 2
+    int state2 = digitalRead(button2); //lendo o pino 3
+    
+    if (state1 == HIGH) //Se for pressionado o botao 1, o estado do LED sera ligado
+        estadoLED1 = HIGH;   
+        
+    if (state2 == HIGH) //Se for pressionado o botao 2, o estado do LED sera desligado
+        estadoLED1 = LOW;    
+
+    //grava o novo estado do LED
+    digitalWrite(pinLED1, estadoLED1);
+
+}
